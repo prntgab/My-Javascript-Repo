@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+  <header></header>
+  <nav>
+    <div id="date">
+      here
+    </div>
+  </nav>
+  <footer></footer>
+  <script>
+    let date = document.getElementById('date');
+
+    function digiClock(){
+      date = new Date();
+
+      let hour = date.getHours();
+      let minute = date.getMinutes();
+      let second = date.getSeconds();
+
+      var nighday = hour >= 12 ? "PM" : "AM";
+      hour = hour % 12;
+      hour = hour ? hour : 12;
+      //       if is true : false
+
+      hour = hour < 10 ? '0' + hour : hour;
+      minute = minute < 10 ? '0' + minute : minute;
+      second = second < 10 ? '0' + second : second; 
+
+ 
+      document.getElementById('date').innerHTML = hour + ":" + minute + ":" + second;
+    }
+    digiClock();
+    setInterval(digiClock, 1000);
+    
+  </script>
+</body>

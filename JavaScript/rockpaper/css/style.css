@@ -1,0 +1,43 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+
+header{
+  border: solid;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  margin-bottom: 40px;
+ 
+}
+nav{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+}
+button{
+  margin-left: 30%;
+  margin-right: 30%;
+  margin: 10px;
+  padding: 30px;
+  display: flex;
+  align-self: center;
+ 
+}
+div{
+  margin: 10px;
+}
+
+#Retry{
+  display: flex;
+  align-self: center;
+  
+  
+  max-width: 500px;
+}

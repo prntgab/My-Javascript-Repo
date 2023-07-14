@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <meta name="description" content="Roughly 155 characters">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+    //READ AS MVC
+     
+      
+     //CONTROLLER START
+      function chose(element){
+        if (thefunction){
+         if(element == 1){
+              thefunction = !thefunction;    
+              alert("Button " + element + " is rock");
+              document.getElementById('you').innerHTML = "You Chose: Rock";         
+              youChose = 1;
+
+              Computerchooses(CompNum);
+              WinOrLose(youChose,CompNum);
+              retryf();
+              ScoringFunc();
+          }
+       
+          else if (element == 2){
+            thefunction = !thefunction;
+            alert("Button " + element + " is paper");
+            document.getElementById('you').innerHTML = "You Chose: Paper";
+            youChose = 2;
+
+            Computerchooses(CompNum);
+            WinOrLose(youChose,CompNum);
+            retryf();
+            ScoringFunc();
+          }
+          else {
+            thefunction = !thefunction;
+            alert("Button " + element + " is scissor");
+            document.getElementById('you').innerHTML = "You Chose: Scissor";       
+            youChose = 3;
+
+            Computerchooses(CompNum);
+            WinOrLose(youChose,CompNum);
+            retryf();
+            ScoringFunc();   
+          }
+          return youChose;
+        }else{
+            console.log("Not allowed to run anymore");
+            document.getElementById('cant').innerHTML = "Not allowed to run anymore";
+          }
+      }
+      //CONTROLLER END
+
+      //MODEL START
+      let youChose = 0;
+      let CompNum = NumGenerator(1,3);
+      let TorF;
+      let thefunction =  true;
+
+      let playerScore = localStorage.getItem("ScoreSave") || 0;
+      let compScore = localStorage.getItem("ScoreSave2") || 0;
+      let drawss = localStorage.getItem("ScoreSave3") || 0;
+       
+      function NumGenerator(min, max){
+        var range = max - min + 1;
+        var randomNumber = Math.floor(Math.random() * range) + min;
+        return randomNumber;
+       }
+      
+      function increaseYourScore(){
+          playerScore++;  
+      }
+      function increaseComScore() {
+          compScore++;     
+      }
+      function reset(){
+        localStorage.clear();
+        location.reload();
+      }
+      function saveScore(){
+        localStorage.setItem('ScoreSave', playerScore);
+        localStorage.setItem('ScoreSave2', compScore);
+        localStorage.setItem('ScoreSave3', drawss);
+      }    
+      //MODEL END
+
+      //VIEW START
+      function Computerchooses(CompNum){
+        if(CompNum==1){
+          document.getElementById('computer').innerHTML = "The Computer chose: Rock";
+        }else if(CompNum==2){
+          document.getElementById('computer').innerHTML = "The Computer chose: Paper";
+        }else if(CompNum==3){
+          document.getElementById('computer').innerHTML = "The Computer chose: Scissor";
+        }else{
+          document.getElementById('computer').innerHTML = "Error";
+        }
+       }
+    
+      function WinOrLose(youChose,CompNum){
+        if(youChose==1 & CompNum==2){
+          TorF = 2;
+          document.getElementById('WorL').innerHTML = "You LOSE!";
+        }else if(youChose==1 & CompNum==3){
+          TorF = 1;
+          document.getElementById('WorL').innerHTML = "You WIN!";
+        }else if(youChose==2 & CompNum==1){
+          TorF = 1;
+          document.getElementById('WorL').innerHTML = "You WIN!";
+        }else if(youChose==2 & CompNum==3){
+          TorF = 2;
+          document.getElementById('WorL').innerHTML = "You LOSE!";
+        }else if(youChose==3 & CompNum==1){
+          TorF = 2;
+          document.getElementById('WorL').innerHTML = "You LOSE!";
+        }
+        else if(youChose==3 & CompNum==2){
+          TorF = 1;
+          document.getElementById('WorL').innerHTML = "You WIN!";
+        }else{
+          TorF = 0;
+          document.getElementById('WorL').innerHTML = "Draw!";
+        }
+        return TorF;
+      }   
+      
+       function retryf(){
+        document.getElementById('Retry1').innerHTML = "Retry?";
+        var button = document.createElement("button");
+        button.textContent = "Yes";
+        Retry.appendChild(button);
+        button.id = "yes";
+        /*var button = document.createElement("button");
+        button.textContent = "No";
+        Retry.appendChild(button);
+        button.id = "no";*/
+        yes.addEventListener("click", function(){
+            console.log('YES I AM CLICKED');
+            location.reload();
+        });
+        /*no.addEventListener("click", function() {
+          console.log('NOO I AM CLICKED');
+        });*/
+       }
+       
+      function ScoringFunc(){
+       if(TorF == 1){
+        increaseYourScore();
+       }else if (TorF == 2){
+        increaseComScore();
+       }else if(TorF <= 0){ 
+        drawss++;  
+       }
+      document.getElementById('scores').innerHTML = "Player Score: " + playerScore;
+      document.getElementById('scores2').innerHTML = "Enemy Score: " + compScore;
+      document.getElementById('scores3').innerHTML = "Draws: " + drawss; 
+      console.log("Player Score:", playerScore);
+      console.log("Enemy Score:", compScore);
+      saveScore();
+      }
+     //VIEW END
+       
+    </script>
+  </head>
+  <body>
+    <header id="header">This is a header</header>
+    <nav>
+      <div id="cant"></div>
+      <button onclick="chose(1)">rock</button>
+      <button onclick="chose(2)">paper</button>
+      <button onclick="chose(3)">scissor</button>   
+      
+      <div id="you">you chose: </div>
+      <div id="computer">computer chose</div>
+      <div id="WorL" >winner loser</div>
+      <div id="Retry1"></div>
+      <div id="Retry"></div>
+      <div id="scores">Your Score Here:</div>
+      <div id="scores2">Comp Score Here:</div>
+      <div id="scores3">Draws Here: </div>
+      <button onclick="reset()">reset</button>
+    </nav>
+   
+  </body>
+</html>

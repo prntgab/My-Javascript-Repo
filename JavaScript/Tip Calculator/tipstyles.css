@@ -1,0 +1,46 @@
+nav{
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  max-width: 500px;
+
+}
+.prices{
+  border: solid;
+  display: flex;
+  flex-direction: row;
+  margin: 50px;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.tip{
+  border: solid;
+  display: flex;
+  flex-direction: row;
+  margin: 50px;
+  justify-content: space-between;
+  padding: 30px;
+}
+.numberofpeople{
+  border: solid;
+  display: flex;
+  flex-direction: row;
+  margin: 50px;
+  justify-content: space-between;
+  padding: 30px;
+  
+}
+.calcs-and-clear{
+  display: flex;
+  flex-direction: row;
+  border: solid;
+  margin: 50px;
+  margin-top: 10px;
+  justify-content: space-around;
+  padding: 30px;
+}
+.calcs-and-clear > button{
+  height: 70px;
+  width: 100px;
+}

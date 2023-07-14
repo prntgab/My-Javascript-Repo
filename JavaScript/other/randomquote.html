@@ -1,0 +1,29 @@
+<script>
+function getRandomQuote() {
+  var quotes = JSON.parse(localStorage.getItem('quotes')) || [];
+
+  if (quotes.length === 0) {
+    // Populate the quotes array if it's empty
+    quotes = [
+      "The only way to do great work is to love what you do. - Steve Jobs",
+      "Innovation distinguishes between a leader and a follower. - Steve Jobs",
+      "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+      "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+      "The best way to predict the future is to create it. - Peter Drucker"
+    ];
+  }
+
+  var randomIndex = Math.floor(Math.random() * quotes.length);
+  var randomQuote = quotes[randomIndex];
+
+  // Remove the selected quote from the quotes array
+  quotes.splice(randomIndex, 1);
+
+  // Save the updated quotes array in localStorage
+  localStorage.setItem('quotes', JSON.stringify(quotes));
+
+  return randomQuote;
+}
+
+console.log(getRandomQuote());
+</script>

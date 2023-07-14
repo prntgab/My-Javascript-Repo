@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tip calculator</title>
+  <link rel="stylesheet" href="tipstyles.css">
+  <head>
+    <title>Button Click Example</title>
+  </head>
+  <body>
+    <header style="display: flex; justify-content: center; margin: 50px;">
+      <div>this is a header</div>
+    </header>
+    <nav>
+      <div class="prices">
+        <div>Price: </div><input type="number" placeholder="0" id="prices">
+      </div>
+      <div class="tip">
+        <div>tip%: </div><input type="number" placeholder="0" id="tips">
+      </div>
+      <div class="numberofpeople">
+        <div>number of people: </div><input type="number" placeholder="0" id="numOfP">
+      </div>
+      <div class="calcs-and-clear">
+        <button id="calc">Calculate</button><button id="clear">Clear</button>
+      </div>
+      
+    </nav>
+    <div id="result">a</div>
+    <div id="total-amount">n</div>
+    <div id="tip-per">z</div>
+    <div id="total-per">x</div>
+    <footer style="display: flex; justify-content: center; margin: 50px;">
+      this is a footer
+    </footer>
+  
+    <script>
+        let InputPrice;
+        let InputTips;
+        let InputNumOfP;
+
+        let buttonCalc = document.getElementById('calc');
+        buttonCalc.addEventListener('click', CalcButton);
+
+        
+        let buttonClear = document.getElementById('clear');
+        buttonClear.addEventListener('click', ClearButton);
+
+      function ClearButton(){
+        location.reload();
+      }
+      function CalcButton() {
+        console.log("Button clicked!");
+        priceInput();
+        tipInput();
+        numPeopleInput();
+        calcPandT();
+      }
+  
+      
+
+      function priceInput() {  
+        let price = document.getElementById('prices');
+        InputPrice = price.value;    
+        
+        
+        console.log(InputPrice);
+        return InputPrice;
+      }
+      function tipInput(){   
+        let tips = document.getElementById('tips');     
+        InputTips = tips.value;
+
+        console.log(InputTips);
+        return InputTips;
+      }
+      function numPeopleInput(){
+        let numOfP = document.getElementById('numOfP');
+        InputNumOfP = numOfP.value;
+
+        console.log(InputNumOfP);
+        return(InputNumOfP);
+      }
+     
+      
+ 
+
+      function calcPandT(){
+        let price = parseFloat(InputPrice, 10);
+        let tips = parseInt(InputTips, 10);
+        let numP = parseInt(InputNumOfP, 10);
+
+        let sum = (price * tips) /100 ;
+        let tipquotient = sum / numP;
+        let totalamount = tipquotient + price;
+        let totalper = totalamount / numP;
+        
+
+        document.getElementById('result').innerHTML = "Tip: " + sum;
+        document.getElementById('total-amount').innerHTML = "The Total Amount: " + totalamount;
+        document.getElementById('tip-per').innerHTML = "Tip Per Person: " + tipquotient;
+        document.getElementById('total-per').innerHTML = "Total Per Person: " + totalper;
+  
+        console.log(sum);
+        return sum;
+      }
+     
+
+    </script>
+  </body>
+  </html>
