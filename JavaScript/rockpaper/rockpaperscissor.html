@@ -2,13 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Page Title</title>
     <meta name="description" content="Roughly 155 characters">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script>
     //READ AS MVC
-     
+   
       
      //CONTROLLER START
       function chose(element){
@@ -16,7 +21,7 @@
          if(element == 1){
               thefunction = !thefunction;    
               alert("Button " + element + " is rock");
-              document.getElementById('you').innerHTML = "You Chose: Rock";         
+              document.getElementById('you').innerHTML = "Rock";         
               youChose = 1;
 
               Computerchooses(CompNum);
@@ -28,7 +33,7 @@
           else if (element == 2){
             thefunction = !thefunction;
             alert("Button " + element + " is paper");
-            document.getElementById('you').innerHTML = "You Chose: Paper";
+            document.getElementById('you').innerHTML = "Paper";
             youChose = 2;
 
             Computerchooses(CompNum);
@@ -39,7 +44,7 @@
           else {
             thefunction = !thefunction;
             alert("Button " + element + " is scissor");
-            document.getElementById('you').innerHTML = "You Chose: Scissor";       
+            document.getElementById('you').innerHTML = "Scissor";       
             youChose = 3;
 
             Computerchooses(CompNum);
@@ -60,6 +65,7 @@
       let CompNum = NumGenerator(1,3);
       let TorF;
       let thefunction =  true;
+    
 
       let playerScore = localStorage.getItem("ScoreSave") || 0;
       let compScore = localStorage.getItem("ScoreSave2") || 0;
@@ -85,17 +91,34 @@
         localStorage.setItem('ScoreSave', playerScore);
         localStorage.setItem('ScoreSave2', compScore);
         localStorage.setItem('ScoreSave3', drawss);
+       
       }    
+      
       //MODEL END
 
       //VIEW START
+        let savedPlayerScore = localStorage.getItem('ScoreSave');
+        let savedCompScore = localStorage.getItem('ScoreSave2');
+        let savedDraws = localStorage.getItem('ScoreSave3');
+        window.addEventListener('load', function() {
+          if(savedPlayerScore === null){
+            document.getElementById('scores').innerHTML = 0;
+          }else{
+            document.getElementById('scores').innerHTML = savedPlayerScore;
+            document.getElementById('scores2').innerHTML = savedCompScore;
+            document.getElementById('scores3').innerHTML = savedDraws;
+            console.log("Player Score:", savedPlayerScore);
+            console.log("Enemy Score:", savedCompScore);
+          }
+           
+          });
       function Computerchooses(CompNum){
         if(CompNum==1){
-          document.getElementById('computer').innerHTML = "The Computer chose: Rock";
+          document.getElementById('computer').innerHTML = "Rock";
         }else if(CompNum==2){
-          document.getElementById('computer').innerHTML = "The Computer chose: Paper";
+          document.getElementById('computer').innerHTML = "Paper";
         }else if(CompNum==3){
-          document.getElementById('computer').innerHTML = "The Computer chose: Scissor";
+          document.getElementById('computer').innerHTML = "Scissor";
         }else{
           document.getElementById('computer').innerHTML = "Error";
         }
@@ -125,26 +148,57 @@
           TorF = 0;
           document.getElementById('WorL').innerHTML = "Draw!";
         }
+
+        if (TorF === 1) {
+          document.getElementById('WorL').style.color = "#4cff82"; 
+        } else if (TorF === 2) {
+          document.getElementById('WorL').style.color = "red"; 
+        } else {
+          document.getElementById('WorL').style.color = "#c600e0"; 
+        }
         return TorF;
       }   
       
        function retryf(){
-        document.getElementById('Retry1').innerHTML = "Retry?";
+        
         var button = document.createElement("button");
-        button.textContent = "Yes";
-        Retry.appendChild(button);
-        button.id = "yes";
-        /*var button = document.createElement("button");
-        button.textContent = "No";
-        Retry.appendChild(button);
-        button.id = "no";*/
+        button.textContent = "Retry";
+        button.style.color = "rgb(0, 0, 0)";
+        button.style.fontSize = "20px";
+        button.style.lineHeight = "11px";
+        button.style.padding = "25px";
+        button.style.paddingRight = "55px";
+        button.style.paddingLeft = "55px";
+        button.style.borderRadius = "50px";
+        button.style.fontWeight = "normal";
+        button.style.textDecoration = "none";
+        button.style.fontStyle = "normal";
+        button.style.fontVariant = "normal";
+        button.style.textTransform = "none";
+        button.style.backgroundImage = "linear-gradient(45deg, rgb(95, 239, 255) 0%, rgb(7, 203, 198) 0%, rgb(255, 255, 255) 100%)";
+        button.style.boxShadow = "0 7px 1px 12px rgba(0, 0, 0, 0)";
+        button.style.border = "2px groove rgb(118, 35, 193)";
+        button.style.display = "inline-block";
+        button.style.marginBottom = "10px";
+
+        button.addEventListener("mouseover", function () {
+        button.style.background = "#5FEFFF";
+      });
+
+        button.addEventListener("mousedown", function () {
+        button.style.background = "#B3F4FC";
+      });
+      button.addEventListener("mouseout", function () {
+        button.style.backgroundImage = "linear-gradient(45deg, rgb(95, 239, 255) 0%, rgb(7, 203, 198) 0%, rgb(255, 255, 255) 100%)";
+      });
+       
+
+        document.getElementById("Retry1").appendChild(button);
+        button.id = "yes";      
         yes.addEventListener("click", function(){
-            console.log('YES I AM CLICKED');
             location.reload();
         });
-        /*no.addEventListener("click", function() {
-          console.log('NOO I AM CLICKED');
-        });*/
+        
        }
        
       function ScoringFunc(){
@@ -155,35 +209,64 @@
        }else if(TorF <= 0){ 
         drawss++;  
        }
+   
+      saveScore();
+      }
       document.getElementById('scores').innerHTML = "Player Score: " + playerScore;
       document.getElementById('scores2').innerHTML = "Enemy Score: " + compScore;
       document.getElementById('scores3').innerHTML = "Draws: " + drawss; 
       console.log("Player Score:", playerScore);
-      console.log("Enemy Score:", compScore);
-      saveScore();
-      }
+      console.log("Enemy Score:", compScore); 
+    
      //VIEW END
        
     </script>
   </head>
-  <body>
-    <header id="header">This is a header</header>
-    <nav>
-      <div id="cant"></div>
-      <button onclick="chose(1)">rock</button>
-      <button onclick="chose(2)">paper</button>
-      <button onclick="chose(3)">scissor</button>   
-      
-      <div id="you">you chose: </div>
-      <div id="computer">computer chose</div>
-      <div id="WorL" >winner loser</div>
-      <div id="Retry1"></div>
-      <div id="Retry"></div>
-      <div id="scores">Your Score Here:</div>
-      <div id="scores2">Comp Score Here:</div>
-      <div id="scores3">Draws Here: </div>
-      <button onclick="reset()">reset</button>
+  <body style="background-color: #d0dfff;">
+    
+    <header id="header" class="container p-4 mt-4 fs-2" style="border-radius: 50px; border: 13px outset #0e303a; background-color:  #b8c3dd;">
+      <div class="container  d-flex justify-content-evenly  align-items-center" style="height: 100px;">
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 100px; border: 3px solid; border-radius: 100%; border-color: black; min-width: 120px; background-color:#4cff82;" id="scores">0</div>
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 100px; border: 3px solid; border-radius: 100%; border-color: black; min-width: 120px; background-color: #c600e0;" id="scores3">0</div>
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 100px; border: 3px solid; border-radius: 100%; border-color: black; min-width: 120px; background-color: #fa2323;" id="scores2">0</div>
+      </div>
+        
+    </header>
+    <div class="container" style="min-height: 55px; max-width: 220px; border-radius: 10px; background-color: transparent;" > 
+      <button onclick="reset()" class="btn btn-outline-primary" style="margin-left: 25%; margin-top: 5%;">Reset Score</button>
+    </div>  
+
+    <nav class="container mb-5  " style="min-height: 200px;">  
+      <div class="row justify-content-center " style="height: 20vh;">
+        <button onclick="chose(1)" class="col col-auto align-self-center mt-xxl-5 mb-xl-1 rockbutton"><img src="img/RPS DUPLI.png" alt=""></button>
+      </div>  
+      <div class="row align-items-center justify-content-center justify-content-evenly" style="height: 20vh;">
+        <button onclick="chose(2)" class="col col-auto mb-sm-5 paperbutton"><img src="img/RPS DUPLI1.png" alt=""></button>
+        <button onclick="chose(3)" class="col col-auto mb-sm-5 scissorbutton"><img src="img/RPS DUPLI3.png" alt=""></button>  
+      </div>
     </nav>
+    <footer class="container mt-xxl-4" style="border-radius: 30px; border: 13px outset #0e303a; background-color:  #b8c3dd;">
+      <div class=" text-center d-flex ">
+        <div class="flex-grow-1  me-4 m-1 fs-2" style="background-color: #4cff824d; color: #4cff82; border-radius: 100px; ">Player Name
+          <div class=" m-4 fs-3 text-light"><div id="you"></div></div>
+          
+        </div>
+        <div class="d-flex flex-column justify-content-center flex-grow-1 m-2" style="border-radius: 40px; background-color: #a600ff50;">
+          <div id="WorL" class="fs-1" ></div>
+          <div class="" style=" min-width: 220px;" id="Retry1"></div>
+          
+          
+        </div>
+        <div class="flex-grow-1  ms-4 m-1 fs-2" style="background-color: #fa232336; color: #fa2323; border-radius: 100px;">Computer
+          <div class=" m-4 fs-3 text-light"><div id="computer"></div></div>
+        </div>
+      </div>
+
+
+      <div>
+         
+      </div>
+    </footer>
    
   </body>
 </html>
