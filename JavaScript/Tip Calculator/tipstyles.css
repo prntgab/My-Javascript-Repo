@@ -1,46 +1,244 @@
-nav{
-  display: flex;
-  flex-direction: column;
-  border: solid;
-  max-width: 500px;
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bricolage+Grotesque:opsz,wght@10..48,700&display=swap');
 
-}
-.prices{
-  border: solid;
-  display: flex;
-  flex-direction: row;
-  margin: 50px;
-  justify-content: space-between;
-  padding: 30px;
+
+.custom-margin{
+  margin-left: 10rem;
+  margin-right: 100px;
 }
 
-.tip{
-  border: solid;
-  display: flex;
-  flex-direction: row;
-  margin: 50px;
-  justify-content: space-between;
-  padding: 30px;
+.currency{
+  border: 1px inset #ccc;
+  border-radius: 4px;
 }
-.numberofpeople{
-  border: solid;
-  display: flex;
-  flex-direction: row;
-  margin: 50px;
-  justify-content: space-between;
-  padding: 30px;
-  
+.currencyinput input {
+  border: none;
 }
-.calcs-and-clear{
-  display: flex;
-  flex-direction: row;
-  border: solid;
-  margin: 50px;
-  margin-top: 10px;
-  justify-content: space-around;
-  padding: 30px;
+.inputbg{
+  border: none;
+  width: 94%;
 }
+
 .calcs-and-clear > button{
   height: 70px;
   width: 100px;
+  background-color: #41c49c;
+  border-radius: 10px;
+  border: none;
+}
+.calcs-and-clear > button:hover{
+  background-color: #01ffb3;
+}
+
+body{
+  font-weight: bolder;
+  color: rgb(240, 240, 240);
+  height: 100vh;
+ 
+  
+}
+nav{
+  font-family: 'Bangers', cursive;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 1000;
+}
+
+
+body::before {
+  content: "XS";
+  color: red;
+  font-size: 2rem;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+@media (min-width: 576px) {
+  body::before {
+    content: "SM";
+  }
+}
+
+@media (min-width: 768px) {
+  body::before {
+    content: "MD";
+  }
+}
+
+@media (min-width: 992px) {
+  body::before {
+    content: "LG";
+  }
+}
+
+@media (min-width: 1200px) {
+  body::before {
+    content: "XL";
+  }
+}
+
+@media (min-width: 1400px) {
+  body::before {
+    content: "XXL";
+  }
+}
+
+
+.swing {
+  display: flex;
+  min-width: 215px;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  color: #377D6A;
+  background: #efefef;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 60px;
+  transition: all 0.3s ease-in-out;
+  margin-left: 10px;
+ 
+
+}
+
+.swing::-webkit-input-placeholder {
+  color: #efefef;
+  text-indent: 0;
+  font-weight: 300;
+ 
+}
+
+.swing + label {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 15px;
+  text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
+  background: #377D6A;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  transform-origin: 2px 2px;
+  transform: rotate(0);
+  animation: swing-back 0.4s 1 ease-in-out;
+  margin-left: 10px;
+  color: #efefef;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(116deg);
+  }
+  40% {
+    transform: rotate(60deg);
+  }
+  60% {
+    transform: rotate(98deg);
+  }
+  80% {
+    transform: rotate(76deg);
+  }
+  100% {
+    transform: rotate(82deg);
+  }
+}
+
+@keyframes swing-back {
+  0% {
+    transform: rotate(82deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.swing:focus,
+.swing:active {
+  color: #377D6A;
+  text-indent: 0;
+  background: #fff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.swing:focus::-webkit-input-placeholder,
+.swing:active::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+.swing:focus + label,
+.swing:active + label {
+  animation: swing 1.4s 1 ease-in-out;
+  transform: rotate(82deg);
+}
+
+.tipbutton{
+  background-color: #377D6A;
+
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  min-height: 50px;
+ 
+}
+
+.tipbutton:hover{
+  color: #377D6A;
+  background-color: #41c49c;
+}
+
+
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  transition: 0.5s;
+ 
+ 
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.collapsible:hover {
+  background-color: rgb(183, 184, 183);
+  color: white;
+  transition: 0.5s;
+}
+
+.collapsible:active {
+  background-color: #00f37a;
+  color: white;
+  /* Add any other styles you want for the active/focus state */
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.collapsible-next {
+  max-height: 0px;
+  overflow: hidden;
+  transition:  max-height 0.5s;
+  
+ 
+}
+.collapsible-next.open-menu{
+  max-height: 500px;
+  transition:  max-height 2s;
+
+}
+
+.numering-result{
+  font-weight: bolder;
+  color: #41c49c;
+  font-size: 30px;
+}
+
+.PriceC{
+  color: red;
 }

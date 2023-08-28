@@ -5,108 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>tip calculator</title>
   <link rel="stylesheet" href="tipstyles.css">
-  <head>
-    <title>Button Click Example</title>
-  </head>
-  <body>
-    <header style="display: flex; justify-content: center; margin: 50px;">
-      <div>this is a header</div>
-    </header>
-    <nav>
-      <div class="prices">
-        <div>Price: </div><input type="number" placeholder="0" id="prices">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bricolage+Grotesque:opsz,wght@10..48,700&display=swap" rel="stylesheet">
+    
+  <body class=" container-fluid d-flex justify-content-center align-items-center" style="background-color: rgba(82, 212, 245, 0.466);">
+    
+    
+    <nav class="container d-flex mx-5 p-5" style=" min-width: 600px; background-color: white; border-radius: 20px;">
+     <main class="container">
+      <div class="prices row">
+        <div class="row pb-2" id="Price-Color">Price: </div>
+        <div class="row position-relative">
+          <span>
+            <input class="swing inputbg" id="prices" type="number" placeholder="Enter The Bill" /><label for="song">&#8369;</label>
+          </span>
+        </div>
       </div>
-      <div class="tip">
-        <div>tip%: </div><input type="number" placeholder="0" id="tips">
+
+      <div class="tip row my-5 text-center">
+        <div class="row pb-2" id="Tip-Color">Select Tip %:  </div>
+        <div class="row">
+          <button class="col-3 me-3 mb-3 py-2 tipbutton" style="min-width: 80px;" id="tip5">
+            5%
+          </button>
+          <button class="col-3 me-3 mb-3 py-2 tipbutton" style="  min-width: 80px;">
+            10%
+          </button>
+          <button class="col-3 me-3 mb-3 py-2 tipbutton" style=" min-width: 80px;">
+            15%
+          </button>
+          <button class="col-3 me-3 mb-3 py-2 tipbutton" style="min-width: 80px;">
+            25%
+          </button>
+          <button class="col-3 me-3 mb-3 py-2 tipbutton" style="min-width: 80px;">
+            50%
+          </button>
+          <button class="col-3 me-3 mb-3 py-2  collapsible" style="min-width: 80px;" type="button" onclick="toggleCustom()">
+            Custom
+          </button>
+        </div>
+        <div class="row collapsible-next position-relative" id="subMenu" >
+          <span>
+            <input class="inputbg swing"  id="tips" type="number" placeholder="Percentage" ><label for="song">%</label>
+          </span>
+         
+        </div>
+        
+       
       </div>
-      <div class="numberofpeople">
-        <div>number of people: </div><input type="number" placeholder="0" id="numOfP">
+      
+      <div class="numberofpeople row" id="NumP-Color">
+        <div class="row pb-2">Number of People: </div>
+        <div class="row position-relative">
+          <span>
+            <input class="swing inputbg" id="numOfP" type="number" placeholder="Per Person" /><label for="song">O</label>
+          </span>
+        </div>
+        
       </div>
-      <div class="calcs-and-clear">
-        <button id="calc">Calculate</button><button id="clear">Clear</button>
-      </div>
+    </main>
+
+      <main2 class="container d-flex flex-column justify-content-evenly" style=" background-color: #377D6A; border-radius: 20px;">
+        <div style="color: white;">
+          <div class="d-flex justify-content-between my-3">
+            <div>Tip Amount: </div>
+            <div id="result"><span class="numering-result">&#8369; 0</span></div>
+          </div>
+          <div class="d-flex justify-content-between my-3">
+            <div >Total Amount: </div>
+            <div id="total-amount"><span class="numering-result">&#8369; 0</span></div>
+          </div>
+         <div class="d-flex justify-content-between my-3">
+          <div>Tip Per Person</div>
+          <div id="tip-per"><span class="numering-result">&#8369; 0</span></div>
+         </div>
+         <div class="d-flex justify-content-between my-3">
+          <div>Total Per Person</div>
+          <div id="total-per"><span class="numering-result">&#8369; 0</span></div>
+         </div>
+        </div>
+
+        <div class="calcs-and-clear d-flex justify-content-evenly">
+          <button id="calc">Calculate</button><button id="clear">Clear</button>
+        </div>
+        
+       
+        
+        
+      </main2>
+      
       
     </nav>
-    <div id="result">a</div>
-    <div id="total-amount">n</div>
-    <div id="tip-per">z</div>
-    <div id="total-per">x</div>
-    <footer style="display: flex; justify-content: center; margin: 50px;">
-      this is a footer
-    </footer>
+    
+   
   
-    <script>
-        let InputPrice;
-        let InputTips;
-        let InputNumOfP;
-
-        let buttonCalc = document.getElementById('calc');
-        buttonCalc.addEventListener('click', CalcButton);
-
-        
-        let buttonClear = document.getElementById('clear');
-        buttonClear.addEventListener('click', ClearButton);
-
-      function ClearButton(){
-        location.reload();
-      }
-      function CalcButton() {
-        console.log("Button clicked!");
-        priceInput();
-        tipInput();
-        numPeopleInput();
-        calcPandT();
-      }
-  
-      
-
-      function priceInput() {  
-        let price = document.getElementById('prices');
-        InputPrice = price.value;    
-        
-        
-        console.log(InputPrice);
-        return InputPrice;
-      }
-      function tipInput(){   
-        let tips = document.getElementById('tips');     
-        InputTips = tips.value;
-
-        console.log(InputTips);
-        return InputTips;
-      }
-      function numPeopleInput(){
-        let numOfP = document.getElementById('numOfP');
-        InputNumOfP = numOfP.value;
-
-        console.log(InputNumOfP);
-        return(InputNumOfP);
-      }
-     
-      
- 
-
-      function calcPandT(){
-        let price = parseFloat(InputPrice, 10);
-        let tips = parseInt(InputTips, 10);
-        let numP = parseInt(InputNumOfP, 10);
-
-        let sum = (price * tips) /100 ;
-        let tipquotient = sum / numP;
-        let totalamount = tipquotient + price;
-        let totalper = totalamount / numP;
-        
-
-        document.getElementById('result').innerHTML = "Tip: " + sum;
-        document.getElementById('total-amount').innerHTML = "The Total Amount: " + totalamount;
-        document.getElementById('tip-per').innerHTML = "Tip Per Person: " + tipquotient;
-        document.getElementById('total-per').innerHTML = "Total Per Person: " + totalper;
-  
-        console.log(sum);
-        return sum;
-      }
-     
-
-    </script>
+    
+    <script src="tip.js"></script>
   </body>
   </html>
