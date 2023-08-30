@@ -1,5 +1,5 @@
 let InputPrice;
-let InputTips;
+let InputTips =0;
 let InputNumOfP;
 
 let buttonCalc = document.getElementById('calc');
@@ -62,11 +62,142 @@ buttonClear.addEventListener('click', ClearButton);
   return InputPrice;
   }
 
+  function tip5calc(price){
+    var tip5 = (price * 5) / 100;
+    console.log(tip5);
+  }
+  //==========TipInput===============
+  let countTips = 0;  
+  let tip5 = document.getElementById("tip5");
+  let tip10 = document.getElementById("tip10");
+  let tip15 = document.getElementById("tip15");
+  let tip25 = document.getElementById("tip25");
+  let tip50 = document.getElementById("tip50");
+    tip5.addEventListener('click', function() { 
+      console.log("this is 5");
+      if (!subMenu.classList.contains("open-menu")) {
+        countTips = 5;
+        
+      } else {
+        subMenu.classList.remove("open-menu");
+        countTips = 5;
+        if(!toggleCustom2.classList.contains("active")){
+
+        }else{
+          toggleCustom2.classList.remove("active");
+        }
+      }
+    });
+     tip10.addEventListener('click', function() {  
+      console.log("this is 10");
+      if (!subMenu.classList.contains("open-menu")) {
+        countTips = 10;
+        
+      } else {
+        subMenu.classList.remove("open-menu");
+        countTips = 10;
+        if(!toggleCustom2.classList.contains("active")){
+
+        }else{
+          toggleCustom2.classList.remove("active");
+        }
+      }
+    });
+    tip15.addEventListener('click', function() {
+     
+      console.log("this is 15");
+      if (!subMenu.classList.contains("open-menu")) {
+        countTips = 15;
+        
+      } else {
+        subMenu.classList.remove("open-menu");
+        countTips = 15;
+        if(!toggleCustom2.classList.contains("active")){
+
+        }else{
+          toggleCustom2.classList.remove("active");
+        }
+      }
+      });
+    tip25.addEventListener('click', function() {
+      console.log("this is 25");
+      if (!subMenu.classList.contains("open-menu")) {
+        countTips = 25;
+        
+      } else {
+        subMenu.classList.remove("open-menu");
+        countTips = 25;
+        if(!toggleCustom2.classList.contains("active")){
+
+        }else{
+          toggleCustom2.classList.remove("active");
+        }
+      }
+    });
+    tip50.addEventListener('click', function() {
+      console.log("this is 50");
+      if (!subMenu.classList.contains("open-menu")) {
+        countTips = 50;
+        
+      } else {
+        subMenu.classList.remove("open-menu");
+        countTips = 50;
+        if(!toggleCustom2.classList.contains("active")){
+
+        }else{
+          toggleCustom2.classList.remove("active");
+        }
+      }
+    }); 
+
+  let subMenu = document.getElementById("subMenu");
+
+  let toggleCustom2 = document.querySelector('.collapsible');
+    
+    toggleCustom2.addEventListener('click', function() {
+      this.classList.toggle('active');
+    
+    });
+
+    function toggleCustom(){
+      subMenu.classList.toggle("open-menu")
+    
+        
+        countTips = 0;
+        console.log("returned to 0");
+     
+
+    }
+ //==========TipInput===============
   function tipInput(){   
-  let tips = document.getElementById('tips');     
-  InputTips = tips.value;
-  console.log(InputTips);
-  return InputTips;
+    let tips = document.getElementById('tips');   
+    
+   
+  
+   
+  
+    if (countTips == 5){   
+      console.log("this is 5");
+      InputTips = 5;
+      
+    }else if(countTips == 10) {
+      console.log("this is 10");
+      InputTips = 10;
+    }else if(countTips == 15) {
+      console.log("this is 15");
+      InputTips = 15;
+    }else if(countTips == 25) {
+      console.log("this is 25");
+      InputTips = 25;
+    }else if(countTips == 50) {
+      console.log("this is 50");
+      InputTips = 50;
+    }
+    else{
+      InputTips = tips.value;
+    }
+    console.log(InputTips);
+    return InputTips;
   }
 
   function numPeopleInput(){
@@ -98,12 +229,6 @@ buttonClear.addEventListener('click', ClearButton);
     document.getElementById('total-per').classList.add('numering-result');
   }
 
-
-let subMenu = document.getElementById("subMenu");
-
-  function toggleCustom(){
-    subMenu.classList.toggle("open-menu")
-  }
 
 
   

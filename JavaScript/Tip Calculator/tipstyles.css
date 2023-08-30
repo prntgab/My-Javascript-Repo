@@ -191,6 +191,10 @@ body::before {
   background-color: #41c49c;
 }
 
+.tipbutton:focus {
+  background-color:  #41c49c;
+  color: white;
+}
 
 
 
@@ -213,8 +217,8 @@ body::before {
   transition: 0.5s;
 }
 
-.collapsible:active {
-  background-color: #00f37a;
+.collapsible.active {
+  background-color:  #41c49c;
   color: white;
   /* Add any other styles you want for the active/focus state */
 }
